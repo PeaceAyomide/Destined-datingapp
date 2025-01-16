@@ -1,0 +1,31 @@
+Website: Expo.dev
+Create project:  npx create-expo-app@latest or npx create-expo-app "App Name"
+
+Install Versions: copy package.json and paste it in yours and press "npm install"
+
+Start App: npx expo start
+
+For Styling:
+const styles = StyleSheet.create({
+
+name-of-choice:{
+  flex: 1,
+  flexDirection: 'column',
+  backgroundColor: 'black',
+},
+
+
+}) and style={styles.name-of-choice}
+
+
+
+// For Bearbone react native project instruction:
+> install: npx create-expo-app 'name of app' --template blank
+> install web viewing incase: npm install react-dom react-native-web
+start viewing and activate web view: npx expo start --web
+> For Navigation: npm install @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context
+npm install react-native-gesture-handler react-native-reanimated
+npm install @react-navigation/stack
+
+> For Tailwind or Nativewind: npm install nativewind tailwindcss react-native-reanimated react-native-safe-area-context
+npx tailwindcss init (to create the tailwind file)
