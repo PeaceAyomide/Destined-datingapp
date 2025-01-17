@@ -2,7 +2,12 @@ import React, { useEffect } from 'react'
 import { View, Text, Image, Animated, TouchableOpacity, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons' 
 
+import { useNavigation } from '@react-navigation/native'
+
 const GetStarted = () => {
+
+const navbtn = useNavigation()
+
     const rotateValue = new Animated.Value(0);
     const fadeAnim = new Animated.Value(0);   // For opacity animation
 
@@ -55,14 +60,14 @@ const GetStarted = () => {
                     }}
                 >
                     
-    <Pressable style={{
+    <Pressable onPress={() => navbtn.navigate('StartDating')} style={{
                 flexDirection: 'row',
                 gap: 5,
         
     }}>           
-                <Text style={{ fontSize: 13, textAlign: 'center',  
+                <Text style={{ fontSize: 16, textAlign: 'center',  
                color: '#CC3263', 
-                fontWeight:'700'}}>Get Started</Text>
+                fontWeight:'500'}}>Get Started</Text>
                 <Icon name="arrow-forward" size={18} color="#CC3263" />
                 </Pressable> 
           </Animated.View>

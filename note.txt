@@ -4,6 +4,7 @@ Create project:  npx create-expo-app@latest or npx create-expo-app "App Name"
 Install Versions: copy package.json and paste it in yours and press "npm install"
 
 Start App: npx expo start
+Fixes:Unable to reach well-known versions endpoint: Solution:npm install -g expo-cli 
 
 For Styling:
 const styles = StyleSheet.create({

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Show from './src/Show';
+import StartDating from './src/component/StartDating'
 import GetStarted from './src/component/GetStarted'
 import Tab from './src/Tab'
 
@@ -31,6 +32,7 @@ const App = () => {
           <Stack.Screen name="GetStarted" options={{ headerShown: false }} component={GetStarted} />
         )}
         <Stack.Screen name="Tab" options={{ headerShown: false }} component={Tab} />
+        <Stack.Screen name="StartDating" options={{ headerShown: false }} component={StartDating} />
       </Stack.Navigator>
     
         </NavigationContainer>
