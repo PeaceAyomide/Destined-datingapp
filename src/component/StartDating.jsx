@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const StartDating = () => {
     const floatAnim = useRef(new Animated.Value(0)).current;
+    const navbtn = useNavigation();
 
     useEffect(() => {
         Animated.loop(
@@ -31,7 +33,7 @@ const StartDating = () => {
             <Animated.View style={{ transform: [{ translateY: floatAnim }] }}>
                 <Image source={require('../assets/StartDating.png')} style={{ width: 300, height: 400, resizeMode: 'contain' }} />
             </Animated.View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navbtn.navigate('Login')}>
                 <LinearGradient
                     colors={['#FA457E', '#7B49FF']}
                     start={{ x: 0, y: 0 }}

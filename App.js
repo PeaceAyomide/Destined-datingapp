@@ -5,7 +5,8 @@ import Show from './src/Show';
 import StartDating from './src/component/StartDating'
 import GetStarted from './src/component/GetStarted'
 import Tab from './src/Tab'
-
+import Login from './src/component/Login'
+  
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
         )}
         <Stack.Screen name="Tab" options={{ headerShown: false }} component={Tab} />
         <Stack.Screen name="StartDating" options={{ headerShown: false }} component={StartDating} />
+     <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       </Stack.Navigator>
     
         </NavigationContainer>
