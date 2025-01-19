@@ -4,8 +4,9 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+import { useNavigation } from '@react-navigation/native';
 const ProfileDetail = () => {
+  const navbtn = useNavigation();
   // State to store the image URI - initially set to a placeholder image
   // When user selects a new image, this state will update with the local URI of that image
   const [image, setImage] = useState('https://via.placeholder.com/150');
@@ -83,10 +84,10 @@ const ProfileDetail = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 20}}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 10}}>
         <Text style={{fontSize: 30, fontWeight: '600', color: '#33196B'}}>Profile Details</Text>
         <Text style={{fontSize: 12, fontWeight: '500', color: '#645290'}}>Fill up the following details</Text>
-        <View style={{ position: 'relative', marginBottom: 20,marginTop: 20 }}>
+        <View style={{ position: 'relative', marginBottom: 10,marginTop: 10 }}>
           <Image
             source={{ uri: image }}
             style={{
@@ -105,7 +106,7 @@ const ProfileDetail = () => {
               right: 0,
               borderRadius: 20,
               overflow: 'hidden'
-            }}
+            }}   hitSlop={40}
           >
             <LinearGradient
               colors={['#FA457E', '#7B49FF']}
@@ -131,7 +132,7 @@ const ProfileDetail = () => {
             paddingHorizontal: 20,
             fontSize: 16,
             color: '#33196B',
-            marginBottom: 15
+            marginBottom: 5
           }}
           returnKeyType="done"
           onSubmitEditing={Keyboard.dismiss}
@@ -148,13 +149,14 @@ const ProfileDetail = () => {
             paddingHorizontal: 20,
             fontSize: 16,
             color: '#33196B',
-            marginBottom: 15
+            marginBottom: 5
           }}
           returnKeyType="done"
           onSubmitEditing={Keyboard.dismiss}
         />
         <View style={{ position: 'relative', width: 300 }}>
           <TextInput
+          
             placeholder="DOB"
             placeholderTextColor="#645290"
             style={{
@@ -167,7 +169,7 @@ const ProfileDetail = () => {
               paddingRight: 50,
               fontSize: 16,
               color: '#33196B',
-              marginBottom: 15
+              marginBottom: 5
             }}
             value={displayDate}
             editable={false}
@@ -350,7 +352,7 @@ const ProfileDetail = () => {
             </TouchableWithoutFeedback>
           </Modal>
         </View>
-        <TouchableOpacity onPress={() => navbtn.navigate('OtpVerification')} >
+        <TouchableOpacity onPress={() => navbtn.navigate('LikesInterest')} >
           <LinearGradient
             colors={['#FA457E', '#7B49FF']}
             start={{ x: 0, y: 0 }}
