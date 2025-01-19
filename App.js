@@ -6,6 +6,8 @@ import StartDating from './src/component/StartDating'
 import GetStarted from './src/component/GetStarted'
 import Tab from './src/Tab'
 import Login from './src/component/Login'
+import OtpVerification from './src/component/OtpVerification'
+import ProfileDetail from './src/component/ProfileDetail'
   
 const Stack = createStackNavigator();
 
@@ -35,6 +37,8 @@ const App = () => {
         <Stack.Screen name="Tab" options={{ headerShown: false }} component={Tab} />
         <Stack.Screen name="StartDating" options={{ headerShown: false }} component={StartDating} />
      <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+     <Stack.Screen name="OtpVerification" options={{ headerShown: false }} component={OtpVerification} />
+     <Stack.Screen name="ProfileDetail" options={{ headerShown: false }} component={ProfileDetail} />
       </Stack.Navigator>
     
         </NavigationContainer>
