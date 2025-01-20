@@ -23,6 +23,15 @@
     },
     "web": {
       "favicon": "./assets/getstartedlogo.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location to find places near you.",
+          "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location to find places near you."
+        }
+      ]
+    ]
   }
 }

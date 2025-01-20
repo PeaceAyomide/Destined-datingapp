@@ -87,7 +87,14 @@ const ProfileDetail = () => {
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 10}}>
         <Text style={{fontSize: 30, fontWeight: '600', color: '#33196B'}}>Profile Details</Text>
         <Text style={{fontSize: 12, fontWeight: '500', color: '#645290'}}>Fill up the following details</Text>
-        <View style={{ position: 'relative', marginBottom: 10,marginTop: 10 }}>
+        <TouchableOpacity 
+          onPress={pickImage}
+          style={{ 
+            position: 'relative', 
+            marginBottom: 10,
+            marginTop: 10 
+          }}
+        >
           <Image
             source={{ uri: image }}
             style={{
@@ -98,15 +105,14 @@ const ProfileDetail = () => {
               borderColor: '#8A52F3',
             }}
           />
-          <TouchableOpacity
-            onPress={pickImage}
+          <View
             style={{
               position: 'absolute',
               bottom: 0,
               right: 0,
               borderRadius: 20,
               overflow: 'hidden'
-            }}   hitSlop={40}
+            }}  
           >
             <LinearGradient
               colors={['#FA457E', '#7B49FF']}
@@ -118,8 +124,8 @@ const ProfileDetail = () => {
             >
               <AntIcon name="camerao" size={20} color="#fff" />
             </LinearGradient>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
         <TextInput
           placeholder="First Name"
           placeholderTextColor="#645290"
@@ -155,25 +161,27 @@ const ProfileDetail = () => {
           onSubmitEditing={Keyboard.dismiss}
         />
         <View style={{ position: 'relative', width: 300 }}>
-          <TextInput
-          
-            placeholder="DOB"
-            placeholderTextColor="#645290"
-            style={{
-              width: '100%',
-              height: 55,
-              borderWidth: 2,
-              borderColor: '#8A52F3',
-              borderRadius: 25,
-              paddingHorizontal: 20,
-              paddingRight: 50,
-              fontSize: 16,
-              color: '#33196B',
-              marginBottom: 5
-            }}
-            value={displayDate}
-            editable={false}
-          />
+          <TouchableOpacity onPress={showDatepicker} style={{ width: '100%' }}>
+            <TextInput
+              placeholder="DOB"
+              placeholderTextColor="#645290"
+              style={{
+                width: '100%',
+                height: 55,
+                borderWidth: 2,
+                borderColor: '#8A52F3',
+                borderRadius: 25,
+                paddingHorizontal: 20,
+                paddingRight: 50,
+                fontSize: 16,
+                color: '#33196B',
+                marginBottom: 5
+              }}
+              value={displayDate}
+              editable={false}
+              pointerEvents="none"
+            />
+          </TouchableOpacity>
           <TouchableOpacity 
             onPress={showDatepicker}
             style={{
@@ -242,24 +250,27 @@ const ProfileDetail = () => {
           </Modal>
         </View>
         <View style={{ position: 'relative', width: 300 }}>
-          <TextInput
-            placeholder="Gender"
-            placeholderTextColor="#645290"
-            style={{
-              width: '100%',
-              height: 55,
-              borderWidth: 2,
-              borderColor: '#8A52F3',
-              borderRadius: 25,
-              paddingHorizontal: 20,
-              paddingRight: 50,
-              fontSize: 16,
-              color: '#33196B',
-              marginBottom: 15
-            }}
-            value={gender}
-            editable={false}
-          />
+          <TouchableOpacity onPress={() => setShowGenderModal(true)} style={{ width: '100%' }}>
+            <TextInput
+              placeholder="Gender"
+              placeholderTextColor="#645290"
+              style={{
+                width: '100%',
+                height: 55,
+                borderWidth: 2,
+                borderColor: '#8A52F3',
+                borderRadius: 25,
+                paddingHorizontal: 20,
+                paddingRight: 50,
+                fontSize: 16,
+                color: '#33196B',
+                marginBottom: 15
+              }}
+              value={gender}
+              editable={false}
+              pointerEvents="none"
+            />
+          </TouchableOpacity>
           <TouchableOpacity 
             onPress={() => setShowGenderModal(true)}
             style={{

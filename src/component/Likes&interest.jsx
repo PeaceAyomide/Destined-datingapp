@@ -38,7 +38,7 @@ const LikesInterest = () => {
  
     return (
     <View style={{flex:1, justifyContent:'center', alignItems:'center', gap: 20}}>
-      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'90%', marginBottom: 20}}>
+      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'90%', position:'absolute', top:50, left:20, right:0, zIndex:10, flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'90%', alignSelf:'center'}}>
         <TouchableOpacity onPress={() => navbtn.goBack()}>
         <FontAwesomeIcon name="arrow-left" size={24} color="#4635E2" />
         </TouchableOpacity>
