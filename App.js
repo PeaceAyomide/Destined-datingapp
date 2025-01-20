@@ -10,6 +10,7 @@ import OtpVerification from './src/component/OtpVerification'
 import ProfileDetail from './src/component/ProfileDetail'
 import LikesInterest from './src/component/Likes&interest'
 import UploadId from './src/component/UploadId'
+import Location from './src/component/Location'
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
      <Stack.Screen name="ProfileDetail" options={{ headerShown: false }} component={ProfileDetail} />
      <Stack.Screen name="LikesInterest" options={{ headerShown: false }} component={LikesInterest} />
      <Stack.Screen name="UploadId" options={{ headerShown: false }} component={UploadId} />
+     <Stack.Screen name="Location" options={{ headerShown: false }} component={Location} />
       </Stack.Navigator>
     
         </NavigationContainer>
