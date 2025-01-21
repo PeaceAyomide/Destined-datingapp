@@ -270,7 +270,7 @@ const LocationComponent = () => {
         <TouchableOpacity 
           style={{ opacity: address && address !== 'Getting location...' ? 1 : 0 }}
           disabled={!address || address === 'Getting location...'}
-          onPress={() => navbtn.navigate('Home')}
+          onPress={() => navbtn.navigate('Tab')}
         >
           <LinearGradient
             colors={['#FA457E', '#7B49FF']}
