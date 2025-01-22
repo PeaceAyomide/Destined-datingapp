@@ -19,6 +19,10 @@ name-of-choice:{
 }) and style={styles.name-of-choice}
 
 
+/// eas update --branch development --message "Removed auto location tracking"
+
+
+
 
 // For Bearbone react native project instruction:
 > install: npx create-expo-app 'name of app' --template blank

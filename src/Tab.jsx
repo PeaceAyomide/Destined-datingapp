@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // Icon Imports
 import AntIcon from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -12,11 +12,20 @@ import Chat from './screen/Chat'
 import Profile from './screen/Profile'
 
 
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Platform } from 'react-native'
 
 const Tab = () => {
   // State Management
   const [activeTab, setActiveTab] = React.useState('Home')
+  const [showNotification, setShowNotification] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowNotification(true)
+    }, 6000)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <View style={{ flex: 1 }}>
@@ -47,6 +56,17 @@ const Tab = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <MaterialCommunityIcons name="bell" size={25} color="#4635E2" />
+            {showNotification && (
+              <View style={{
+                width: 10,
+                height: 10,
+                borderRadius: 5,
+                backgroundColor: 'red',
+                position: 'absolute',
+                top: -2,
+                right: -2,
+              }} />
+            )}
           </TouchableOpacity>
           <TouchableOpacity>
           <Ionicons name="settings" size={25} color="#4635E2" />
@@ -72,7 +92,7 @@ const Tab = () => {
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#fff',
-        paddingVertical: 15,
+        paddingVertical: Platform.OS === 'android' ? 8 : 15,
         borderTopWidth: 1,
         borderTopColor: '#fff'
       }}>
@@ -82,7 +102,7 @@ const Tab = () => {
             key={tab}
             onPress={() => setActiveTab(tab)}
             style={{
-              paddingVertical: 20,
+              paddingVertical: Platform.OS === 'android' ? 12 : 20,
               paddingHorizontal: 20,
               flexDirection: 'row',
               alignItems: 'center',

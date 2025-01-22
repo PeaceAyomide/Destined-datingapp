@@ -11,19 +11,8 @@ const LocationComponent = () => {
   const [address, setAddress] = React.useState('') // Stores the main selected location address
   const [searchText, setSearchText] = React.useState('') // Stores what user types in search box
   const [suggestions, setSuggestions] = React.useState([]) // Stores location suggestions while typing
+  const [isLocationSet, setIsLocationSet] = React.useState(false)
   const navbtn = useNavigation();
-
-  // This useEffect runs when the app starts or comes back from background
-  // It checks if we have location permission and gets current location if allowed
-  React.useEffect(() => {
-    const subscription = AppState.addEventListener('change', async (nextAppState) => {
-      if (nextAppState === 'active') {
-        const { status } = await Location.getForegroundPermissionsAsync()
-        status === 'granted' && getCurrentLocation()
-      }
-    })
-    return () => subscription.remove() // Cleanup when component unmounts
-  }, [])
 
   // Function to open device settings when location permission is needed
   const openSettings = () => {
@@ -32,13 +21,11 @@ const LocationComponent = () => {
       : Location.enableLocationAsync() // For Android devices
   }
 
-  // Function to get user's current location using device GPS
+  // Function to get user's current location - only called when user taps the button
   const getCurrentLocation = async () => {
     try {
-      // First, request permission to use location
-      const { status } = await Location.requestForegroundPermissionsAsync()
+      const { status } = await Location.requestForegroundPermissionsAsync();
       
-      // If user denied permission, show alert to enable it
       if (status !== 'granted') {
         Alert.alert(
           'Location Permission Required',
@@ -47,28 +34,27 @@ const LocationComponent = () => {
             { text: 'Open Settings', onPress: openSettings },
             { text: 'Cancel', style: 'cancel' }
           ]
-        )
-        return
+        );
+        return;
       }
 
-      setAddress('Getting location...') // Show loading state
+      setAddress('Getting location...');
       
-      // Get current GPS coordinates
       const location = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.High,
-      })
+      });
       
-      // Convert coordinates to readable address
-      const { latitude, longitude } = location.coords
-      const [result] = await Location.reverseGeocodeAsync({ latitude, longitude })
+      const { latitude, longitude } = location.coords;
+      const [result] = await Location.reverseGeocodeAsync({ latitude, longitude });
       
-      // Update address if we got a result
       if (result) {
-        setAddress(`${result.street || ''} ${result.city || ''} ${result.region || ''}`.trim())
+        const formattedAddress = `${result.street || ''} ${result.city || ''} ${result.region || ''}`.trim();
+        setAddress(formattedAddress);
+        setIsLocationSet(true);
       }
     } catch (error) {
-      setAddress('')
-      // Show error alert if something goes wrong
+      setAddress('');
+      setIsLocationSet(false);
       Alert.alert(
         'Location Error',
         'Could not fetch location. Please check your settings.',
@@ -76,9 +62,9 @@ const LocationComponent = () => {
           { text: 'Open Settings', onPress: openSettings },
           { text: 'Cancel', style: 'cancel' }
         ]
-      )
+      );
     }
-  }
+  };
 
   // Function to get location suggestions as user types
   const getSuggestions = async (text) => {

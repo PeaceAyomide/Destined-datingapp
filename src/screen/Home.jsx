@@ -10,6 +10,7 @@ import Animated, {
   useAnimatedGestureHandler
 } from 'react-native-reanimated'
 import { PanGestureHandler } from 'react-native-gesture-handler'
+import { LinearGradient } from 'expo-linear-gradient'
 
 // Get screen dimensions for calculations
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -269,9 +270,7 @@ const Home = () => {
             width: 64,
             height: 64,
             borderRadius: 32,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
+            overflow: 'hidden',  // Important for gradient
             elevation: 5,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 2 },
@@ -283,7 +282,16 @@ const Home = () => {
             runOnJS(handleSwipeLeft)()
           }}
         >
-          <AntDesign name="close" size={30} color="#F76C6B" />
+          <LinearGradient
+            colors={['#FF7D95', '#EF3349']}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AntDesign name="dislike1" size={30} color="#fff" />
+          </LinearGradient>
         </TouchableOpacity>
 
         {/* Like Button */}
@@ -292,9 +300,7 @@ const Home = () => {
             width: 64,
             height: 64,
             borderRadius: 32,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
+            overflow: 'hidden',  // Important for gradient
             elevation: 5,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 2 },
@@ -306,7 +312,16 @@ const Home = () => {
             runOnJS(handleSwipeRight)()
           }}
         >
-          <AntDesign name="like1" size={30} color="#4CD964" />
+          <LinearGradient
+            colors={['#34F07F', '#10AA7C']}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AntDesign name="like1" size={30} color="#fff" />
+          </LinearGradient>
         </TouchableOpacity>
 
         {/* Love Button */}
@@ -315,9 +330,7 @@ const Home = () => {
             width: 64,
             height: 64,
             borderRadius: 32,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
+            overflow: 'hidden',  // Important for gradient
             elevation: 5,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 2 },
@@ -329,7 +342,16 @@ const Home = () => {
             runOnJS(handleSwipeRight)()
           }}
         >
-          <AntDesign name="heart" size={30} color="#8A52F3" />
+          <LinearGradient
+            colors={['#FFBC7D', '#EF5533']}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AntDesign name="heart" size={30} color="#fff" />
+          </LinearGradient>
         </TouchableOpacity>
       </View>
     </View>
